@@ -1,0 +1,7 @@
+#Remember to install a virtual python environment when testing 
+
+mkdir mypyenv
+sudo apt-get install python3-venv
+python3 -m venv /home/ubuntu/mypyenv
+source ~/mypyenv/bin/activate
+pip3 install kafka-python

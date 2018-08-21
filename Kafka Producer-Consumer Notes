@@ -5,3 +5,23 @@ sudo apt-get install python3-venv
 python3 -m venv /home/ubuntu/mypyenv
 source ~/mypyenv/bin/activate
 pip3 install kafka-python
+
+
+#Sample Zookeeper Telnet Commands
+telnet localhost 2181
+sudo netstat -plnt | grep ':2181'
+echo stat | nc localhost 2181 |grep Mode
+
+#Sample Zookeeper CLI commands
+kafka@ip-10-0-0-6:~/zookeeper/bin$ ./zkCli.sh -server localhost:218
+ls /brokers/ids ('This lists the brokers that Zookeeper is able to see') 
+To exit: Type: close, then ctrl-z
+
+#Start Broker on Auto-Scaled Kafka EC2
+su kafka
+cd kafka
+rm kafka.log  ('If one is there')
+nohup ~/kafka/bin/kafka-server-start.sh ~/kafka/config/server.properties > ~/kafka kafka.log 2>&1 &
+cat kafka.log
+
+#Zookeeper--Move Topics and Partitons across Kafka Brokers

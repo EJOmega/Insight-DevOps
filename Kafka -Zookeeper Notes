@@ -24,4 +24,15 @@ rm kafka.log  ('If one is there')
 nohup ~/kafka/bin/kafka-server-start.sh ~/kafka/config/server.properties > ~/kafka kafka.log 2>&1 &
 cat kafka.log
 
-#Zookeeper--Move Topics and Partitons across Kafka Brokers
+#Zookeeper--Move Topics and Partitons across Kafka Brokers (On Zookeeper Leader)
+bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic amtrans
+bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic pmtrans
+bin/kafka-reassign-partitions.sh --zookeeper localhost:2181 --generate --topics-to-move-json-file topics.json --broker-list 1,2,3,'new broker id'
+(Reformat recommendation into JSON file, reference reassignmentin & rassignmentout.json files)
+
+bin/kafka-reassign-partitions.sh --zookeeper localhost:2181 --execute --reassignment-json-file reassignmentout.json
+bin/kafka-reassign-partitions.sh --zookeeper localhost:2181 --verify --reassignment-json-file reassignmentout.json
+
+(After broker is terminated)
+bin/kafka-reassign-partitions.sh --zookeeper localhost:2181 --execute --reassignment-json-file reassignmentin.json
+bin/kafka-reassign-partitions.sh --zookeeper localhost:2181 --verify --reassignment-json-file reassignmentout.json

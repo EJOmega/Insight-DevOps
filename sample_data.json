@@ -1,0 +1,31 @@
+#Sample data generated from https://www.ccardgenerator.com/
+#The sample data file created is roughly 300k.
+#In order to create a big enough file, I issued a Linux command to replicate the data within the file.
+#Linux command: for i in {1..100000}; do cat 'filename'>>'filename';done
+
+
+   {
+        "CreditCard": {
+            "IssuingNetwork": "American Express",
+            "CardNumber": "374319024539829",
+            "Name": "Grace Adams",
+            "Address": "Devon Court 117",
+            "Country": "Thailand",
+            "CVV": "103",
+            "Limit": "2056",
+            "Exp": "04/2024"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "American Express",
+            "CardNumber": "345800477279381",
+            "Name": "Samantha Walker",
+            "Address": "Pleasant Street 55",
+            "Country": "Myanmar",
+            "CVV": "526",
+            "Limit": "2380",
+            "Exp": "02/2024"
+        }
+    }
+]
